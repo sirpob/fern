@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รักชิ ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Tahoma,sans-serif;
+    background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffd1ff,#ffc3a0);
+    background-size:400% 400%;
+    animation:bg 10s ease infinite;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    background:rgba(255,255,255,0.9);
+    padding:40px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(255,255,255,.8);
+    z-index:10;
+}
+
+h1{
+    color:#ff4d6d;
+    margin-bottom:20px;
+}
+
+button{
+    border:none;
+    padding:15px 35px;
+    border-radius:50px;
+    background:#ff4d6d;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    animation:bounce 1s infinite;
+}
+
+@keyframes bounce{
+    50%{
+        transform:scale(1.1);
+    }
+}
+
+#message{
+    margin-top:25px;
+    font-size:32px;
+    font-weight:bold;
+    animation:rainbow 2s infinite;
+}
+
+@keyframes rainbow{
+    0%{color:#ff004c;}
+    25%{color:#ff8800;}
+    50%{color:#ff00ff;}
+    75%{color:#6a00ff;}
+    100%{color:#ff004c;}
+}
+
+.heart{
+    position:absolute;
+    font-size:25px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>❤️ ถึงชิ ❤️</h1>
+
+    <button onclick="love()">
+        กดตรงนี้ 💖
+    </button>
+
+    <div id="message">
+        ❤️
+    </div>
+</div>
+
+<script>
+
+const texts = [
+"รักชิ ❤️",
+"คิดถึงชิ จากใบเฟิร์น ❤️",
+"รักชิมากๆ ❤️",
+"คิดถึงชินะ ❤️",
+"รักชิที่สุด ❤️",
+"จากใบเฟิร์น ❤️",
+"ชิน่ารักที่สุด ❤️",
+"ใบเฟิร์นคิดถึงชิ ❤️"
+];
+
+function love(){
+
+    let random = texts[Math.floor(Math.random()*texts.length)];
+
+    document.getElementById("message").innerHTML = random;
+
+    for(let i=0;i<15;i++){
+        createHeart();
+    }
+}
+
+function createHeart(){
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (20 + Math.random()*40) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+</html>
